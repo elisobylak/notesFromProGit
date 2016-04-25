@@ -1,0 +1,47 @@
+Pro Git
+Chapter 1
+
+Version Control is a system that records changes to a file or set of files over time.
+
+Programmers long ago had to develop Version Control Systems that had a simple database that kept all the changes to files under revision control.
+
+Then they ran into the problem of having to collaborate with multiple users on many different systems. This is why they developed Centralized Version Control Systems. Examples, CVS, Subversion, and Perforce.
+
+Then comes Distributed Version Control Systems, where clients don’t just check out the latest snapshot of the files: they fully mirror the whole repository.
+
+Git thinks of its data more like a set of snapshots of a miniature filesystem. It can be thought of as a stream of snapshots.
+
+Nearly every operation is local
+Git has Integrity 
+Git Generally only adds data
+
+The Three States:
+-Git has three mani states that you files can reside in: committed, modified, and staged.
+—Committed means that the data is safely stored in you local database.
+—Modified means that you have changed the files but have not committed it to you database yet.
+—Stages means that you have marked a modified files in its current version to go into tour next committee snapshot.
+
+The Git Directory (.git) is where Git stores the metadata and objects database for your project.
+
+The Basic Git workflow looks like this:
+1) You modify files in your working directory
+2) You stage the files, adding snapshots of them to your staging area
+3) You do a committee, which takes the files as they are in the staging area and stores that snapshot permanently to your Git directory 
+
+First time Git setup:
+-Git comes with a tool called ‘git config’ that lets you get and set configuration variables
+-Set you user name and email address
+->git config —global user.name ‘John Doe’
+->git config —global user.email ‘JD@example.com’
+*(it is a double dash, dash dash, - -, before global)
+
+-To check your settings use the ‘git config —list’ command 
+*(it is a double dash, dash dash, - -, before list)
+
+-You can also check what Git thinks a specific key’s value is by typing ‘git config <key>’
+->git config user.name
+->>John Doe
+
+-You can pull up the ManPages for a command by using ‘git help <verb>’
+
+-If you need help from someone in person, you can try the #git or #github channel on Freenode IRC server.

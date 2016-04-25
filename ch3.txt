@@ -1,0 +1,47 @@
+Pro Git
+Chapter 3
+20-apr-16
+
+Git Branching
+
+-Branching means you diverge from the main line of development and continue without messing with that main line
+-The “master” branch in Git is not a special branch. It’s just like every other branch, just gets the default name ‘master’
+
+Creating a new branch:
+-Git keeps a special pointer called HEAD to know which branch you’re on.
+-The command ‘git log’ show you where the branch pointers are pointing
+->You can use ‘git log —-oneline —-decorate to get the concise output
+->You can run ‘git log —-oneline —-decorate —-graph —-all’ and it will print out a history of your commits with pretty graphics
+
+Switching Branches:
+-To switch branches run the ‘git checkout [branch_name]’ command
+->This will move the HEAD pointer from your current branch to the one given as the git checkout argument 
+-If you switch to an older branch, your working directory will be reverted to look like it did the last time you committed it.
+-To create a branch and switch to it at the same time run ‘git checkout -b [branch_name]’
+
+Merging:
+-For example, you can run your tests in a branch ‘hot fix’ and merge it back into your master branch to deploy to production
+-Use the ‘git merge [branch_name]
+-After merging your hot fix you can delete that branch since you won’t be needing it anymore. use the -d flag as in ‘git branch -d hotfix’
+-A merge commit is special in that it only has one parent
+
+Basic merge conflicts:
+-To see which files are unmarked, you can use the ‘git status’ command to get that info
+
+Branch management:
+-If you run it with no arguments, you get a simple listing of your current branches
+-> ex. ‘git branch’
+-The output will have a ‘*’ next to the branch you currently have checked out
+-To see the last commit on each branch, run the ‘git branch -v’ command
+
+Pushing:
+-To push work up to a remote us the ‘git push <remote> <branch>’ command
+-> ex. git push origin master
+
+Pulling:
+-There is a command called ‘git pull’ which is essentially a git fetch immediately followed by a git merge
+
+Deleting remote branches:
+-you can delete a remote branch using the following command, ‘git push <remote> —-delete <branch>’
+
+

@@ -1,0 +1,92 @@
+Pro Git
+Chapter 2
+
+Initializing a repository in an existing directory:
+-Use the ‘git init’ command
+
+Cloning an existing repository:
+-A Git clone is a full copy of nearly all data that the sever has. Every version of every file for the history of the project is pulled down by default when you run git clone.
+-ex. git clone [url]
+-If you want to clone the repository into a directory named something else use ‘git clone [url] [dest_Name]’
+
+Remember that each file in your working directory can be in one of two states:
+-Tracked; files that were in the last snapshot. They can be unmodified, modified, or staged
+-Untracked; are files that are everything else - any files in your working directory that were not in your last snapshot and are not in your staging area.
+
+To determine which files are in which state use the ‘git status’ command
+-Untracked basically means that Git sees a files you didn’t have in the previous snapshot(commit)
+-If you run ‘git status -s’ you get a far more simplified output from the command
+
+To start tracking a new file us the ‘git add’ command
+-This will stage the files when you run the command
+-Think of this more as “add this content to the next commit” rather than “add this file to the project”
+-If you modify a file after you run ‘git add’, you have to run ‘git add’ again to stage the latest version of the file
+
+Ignoring files:
+-In such cases, you can create a file listing patterns to match against named ‘.gitignore’
+-ex. cat .gitignore
+     *.[oa]
+     *~
+->The first line tells Git to ignore any files ending in “.o” or “.a”
+->The second line tells Git to ignore all files whose names end with a tilde(~)
+-Github maintains a list of good .gitignore examples at https://github.com/github/gitignore
+
+Use the ‘git diff’ command to show you the exact lines added or removed
+-sometimes referred to as ‘the patch’
+-If you want to see what you’ve staged that will go into your next commit, you can use ‘git diff —-staged’
+
+Committing your changes to Git:
+-use the ‘git commit’ command
+-Doing so launches a text editor so you can edit the commit message ( although you can set with the ‘git config —-global core.editor’ )
+-The default commit message contains the latest output of the git status
+-Use ‘git commit -v’ to get an even more explicit reminder of what you’ve modified 
+-Alternatively, you can type your commit message inline with the ‘git commit -m “your message” flag
+-Every time you perform a commit you’re recording a snapshot of your project that you can revert to or compare to later
+
+Skipping the staging area:
+-Adding the ‘-a’ option to the git commit command makes Git automatically stage every file that is already tracked before doing the commit
+
+Removing files:
+-To remove a file from Git you have to remove it from your tracked files
+-use the ‘git rm’ command to do this.
+**If you simply remove the file from your working directory, it shows up under the “changed but not updated” (that is, unstated) area of you git status output
+-If you modified the file and added it to the index already, you must force the removal with the ‘-f’ option
+
+Moving files:
+-use the ‘git mv file_from file_to’ command
+-This will rename a file in Git
+
+Viewing the commit history:
+-To look back to see what has happened, use the ‘git log’ command
+-One of the more helpful options is -p, which shows the difference introduced in each commit
+
+Undoing things:
+-If you want to tray that commit again, you can run the command, ‘git commit —-amend’
+
+Working with Remotes:
+-A remote repository is a version of your project that is hosted on the internet or network somewhere
+-To see which remote servers you have configured, run the ‘git remote
+ command
+-It will list the short names of each of your remotes. Origin is the default remote that comes from the git init
+-You can use the ‘-v’ options which shows you the URLs that Git has stored for the short name to be used when reading or writing to that remote
+-To add a new remote Git repository as a short name, you can run the ‘git remote add <shortname> <url>’ command
+
+Fetching and Pulling from your remotes:
+-To get data from your remote projects, you can run the ‘git fetch[remote-name]’ command
+-The command goes out to that remote project and fetches all the data from that remote project that don’t have yet
+-The ‘git pull’ command is used to automatically pull down and then merge that remote branch into your current branch
+—>Running git pull generally pulls data from the server you originally cloned from and automatically trues to merge it into the code you’re currently working on
+
+Pushing to your remotes:
+-Is to push the project upstream
+-use the command ‘git push [remote-name] [branch-name]’
+-To inspect a remote or see more information about a particular remote use the ‘git remote show [remote-name]’ command
+
+Tagging:
+-List the available tags in Git use ‘git tag’
+-Creating an annotated tag is easy, use ‘git tag -a v[version-number] -m “your tag message”
+-You can see the tag along with the commit that was tagged by using ‘git show v[version-number]’
+
+
+
+
